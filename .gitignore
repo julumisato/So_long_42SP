@@ -1,2 +1,6 @@
 *.out
 .gitignore
+bin/
+objs/
+*.o
+*.a
