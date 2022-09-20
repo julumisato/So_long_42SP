@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 22:06:05 by jusato            #+#    #+#             */
-/*   Updated: 2022/05/10 22:52:35 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/20 04:13:16 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,6 @@ t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 int			ft_lstsize(t_list *lst);
 
+/*.............Other functions........................*/
+void	ft_free_ptr(void **ptr);
 #endif

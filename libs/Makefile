@@ -6,7 +6,7 @@
 #    By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 21:19:04 by jusato            #+#    #+#              #
-#    Updated: 2022/05/11 19:22:51 by jusato           ###   ########.fr        #
+#    Updated: 2022/09/20 04:18:08 by jusato           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			ft_atoi.c ft_calloc.c ft_strdup.c \
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c\
 			ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
-			ft_putendl_fd.c ft_putnbr_fd.c
+			ft_putendl_fd.c ft_putnbr_fd.c ft_free_ptr.c
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -32,13 +32,15 @@ FLAGS		= -Wall -Wextra -Werror
 AR			= ar -rcs
 RM			= rm -f
 
+HDR_PATH	= ../../includes/
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 		$(AR) $(NAME) $(OBJS)
 
 $(OBJS): $(SRCS)
-		$(CC) $(FLAGS) -c $(SRCS) -I .
+		$(CC) $(FLAGS) -c $(SRCS) -I$(HDR_PATH)
 
 clean:
 		$(RM) $(OBJS) $(BONUS_OBJ)

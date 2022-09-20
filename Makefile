@@ -36,7 +36,7 @@ $(LIB):
 
 $(OBJS): $(SRCS)
 	@$(MKDIR) $(OBJ_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(HDR_PATH) -c $< -o $@
 
 run: $(NAME)
 	$(NAME)
