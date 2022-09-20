@@ -5,3 +5,4 @@ objs/
 *.o
 *.a
 so_long
+vgcore.*

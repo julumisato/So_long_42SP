@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/20 04:15:06 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/20 05:17:53 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,13 @@
 
 #include <mlx.h>
 #include "libft.h"
+#include <X11/keysym.h>
+
+//_____TYPEDEFS_______//
+typedef	struct	s_init
+{
+	void	*mlx;
+	void	*win;
+}				t_init;
 
 #endif
