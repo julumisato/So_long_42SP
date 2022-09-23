@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/23 04:03:03 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/23 06:09:12 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,25 @@
 // event names & masks macros
 #include <X11/X.h>
 
+//_____DEFINE MACROS___//
+# define TILESIZE	32
+
 //_____TYPEDEFS_______//
+
+typedef struct s_win
+{
+	void	*win_p;
+	int		height;
+	int		width;
+}					t_win;
+
 typedef	struct	s_init
 {
 	void	*mlx;
-	void	*win;
+	t_win	*window;
 }				t_init;
 
  void	ft_mem_allocate(t_init *game);
+
 
 #endif
