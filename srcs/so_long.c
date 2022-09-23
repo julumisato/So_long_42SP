@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/23 06:17:50 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/24 01:31:31 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,40 @@ int	ft_handle_key(int key, t_init *game)
 	return (0);
 }
 
-//void	ft_error()
+void	ft_validate(int argc, char *map_path)
+{
+	if (argc != 2)
+		exit (1);
+	if (ft_strncmp(&map_path[ft_strlen(map_path) - 4], ".ber", 4) != 0)
+	{
+		printf("invalid map format!\n");
+		exit (1);
+	}
+	return ;
+}
 
-// void	ft_mem_allocate(t_init *game)
-// {
-// 	game = ft_calloc(1, sizeof(t_init));
-// 	return ;
-// }
+void	ft_allocate_game_memory(t_init *game)
+{
+	game->window = ft_calloc(1, sizeof(t_win));
+	return ;
+}
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_init	game;
 
-	// ft_mem_allocate(&game);
+	ft_validate(argc, argv[1]);
+	ft_allocate_game_memory(&game);
 	game.mlx = mlx_init();
 	if (game.mlx == NULL)
 		return (1);
-	
-	game.window->height = TILESIZE * 15; //test 
-	game.window->width = TILESIZE * 20;	//test
+	if (!game.window)
+		exit (1);
+	game.window->y = TILESIZE * 15;
+	game.window->x = TILESIZE * 20;
 	game.window->win_p = mlx_new_window(game.mlx,
-			game.window->width,
-			game.window->height,
+			game.window->x,
+			game.window->y,
 			"game window");
 	if (game.window->win_p == NULL)
 	{
