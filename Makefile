@@ -1,17 +1,15 @@
+# Compilation & Shell Commands
+CC =		cc
+CFLAGS = 	-Wall -Wextra -Werror -I $(HDR_PATH)
+MKDIR =		mkdir -p
+RM =		rm -f
+
 # Paths
 HDR_PATH =	./includes/
 SRC_PATH =	./srcs/
 LIB_PATH =	./libs/
 OBJ_PATH =	./objs/
 BIN_PATH =	./bin/
-
-# Compilation
-CC =		gcc
-CFLAGS = 	-Wall -Wextra -Werror -I $(HDR_PATH)
-
-# Other commands
-MKDIR =		mkdir -p
-RM =		rm -f
 
 # Files
 NAME =		$(BIN_PATH)so_long
@@ -22,7 +20,6 @@ OBJS =	$(addprefix $(OBJ_PATH), $(OBJ_FILES))
 LIB =		$(LIB_PATH)libft.a
 
 # TARGETS
-
 all: $(BIN_PATH) $(NAME)
 
 $(BIN_PATH):
@@ -41,7 +38,6 @@ $(OBJS): $(SRCS)
 run: $(NAME)
 	$(NAME)
 
-# Clean
 clean:
 	@$(RM) $(OBJS)
 	@make clean -C $(LIB_PATH)
