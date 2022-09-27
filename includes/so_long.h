@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/24 01:56:00 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/27 05:24:27 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #include <X11/X.h>
 
 
-//TEST INCLUDES
+//TEST INCLUDES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #include <stdio.h>
 
 
@@ -43,14 +43,13 @@ typedef struct s_win
 
 typedef struct s_map
 {
-	void	*map_ptr;
+	void	*map_p;
 }				t_map;
 
 typedef	struct	s_solong
 {
 	void	*mlx;
 	t_win	*window;
-	t_map	*map;
 }				t_solong;
 
 #endif
