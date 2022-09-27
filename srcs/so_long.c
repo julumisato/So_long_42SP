@@ -6,19 +6,11 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/27 05:35:00 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/27 06:05:12 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_allocate_game_memory(t_solong *game)
-{
-	game->window = ft_calloc(1, sizeof(t_win));
-	if (!game->window)
-		exit (0);
-	return ;
-}
 
 void	ft_mlx_init(t_solong *game)
 {
@@ -40,17 +32,13 @@ void	ft_validate(int argc, char *map_path) //reminder: try to implement map path
 	return ;
 }
 
-void	ft_close(t_solong *game)
+int	ft_close(t_solong *game)
 {
-	mlx_destroy_window(game->mlx, game->window->win_p);
-	game->window->win_p = NULL;
-	//destroy images
-
-	//free pointers
-	ft_free_ptr((void *)&game->window->win_p);
-	ft_free_ptr((void *)&game->window);
-	//if display initiated, destroy and free mlx ptr too
-	mlx_destroy_display(game->mlx);
+	mlx_destroy_window(game->mlx, game->win_p);
+	game->win_p = NULL;
+	//destroy images when implemented
+	//free allocated memory
+	mlx_destroy_display(game->mlx);//if display initiated, destroy and free mlx ptr too
 	ft_free_ptr((void *)&game->mlx);
 	exit (0);
 }
@@ -58,13 +46,13 @@ void	ft_close(t_solong *game)
 int	ft_handle_key(int key, t_solong *game)
 {
 	if (key == XK_Escape || key == XK_q)
-		ft_close(game); // free memory and close game
+		ft_close(game);
 	return (0);
 }
 
 void	ft_specify_hooks(t_solong *game)
 {
-	mlx_key_hook(game->window->win_p, &ft_handle_key, &game);
+	mlx_hook(game->win_p, 17, (1L << 17), &ft_handle_key, &game);
 	return ;
 }
 
@@ -72,16 +60,16 @@ int	main(int argc, char **argv)
 {
 	t_solong	game;
 
-	ft_validate(argc, argv[1]); //validates map format # implement validation of path
-	ft_allocate_game_memory(&game); // allocate memory needed
-	ft_mlx_init(&game); // mlx init
-	game.window->y = TILESIZE * 15;
-	game.window->x = TILESIZE * 20;
-	game.window->win_p = mlx_new_window(game.mlx, game.window->x,
-									game.window->y, "game window");
-	if (game.window->win_p == NULL)
+	ft_memset(&game, 0, sizeof(t_solong));
+	ft_validate(argc, argv[1]);
+	ft_mlx_init(&game);
+	game.win_y = TILESIZE * 15;
+	game.win_x = TILESIZE * 20;
+	game.win_p = mlx_new_window(game.mlx, game.win_x, game.win_y, "game window");
+	if (game.win_p == NULL)
 		ft_close(&game);
-	ft_specify_hooks(&game);
+	mlx_hook(game.win_p, DestroyNotify, NoEventMask, ft_close, &game);
+	mlx_hook(game.win_p, KeyPress, KeyPressMask, ft_handle_key, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

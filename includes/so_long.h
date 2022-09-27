@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/27 05:24:27 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/27 06:06:01 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@
 
 //_____TYPEDEFS_______//
 
-typedef struct s_win
-{
-	void	*win_p;
-	int		y;
-	int		x;
-}					t_win;
-
 typedef struct s_map
 {
 	void	*map_p;
@@ -49,7 +42,10 @@ typedef struct s_map
 typedef	struct	s_solong
 {
 	void	*mlx;
-	t_win	*window;
+
+	void	*win_p;
+	int		win_x;
+	int		win_y;
 }				t_solong;
 
 #endif
