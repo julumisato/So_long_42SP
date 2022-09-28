@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/27 06:05:12 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/28 04:27:31 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,42 @@ void	ft_mlx_init(t_solong *game)
 	return ;
 }
 
-void	ft_validate(int argc, char *map_path) //reminder: try to implement map path valiadation too
+void	ft_validate(t_solong *game, int argc, char *map_path)
 {
+	// char	*mapstr;
+	// int		fd;
+	// int		line;
+
 	if (argc != 2)
 		exit (1);
 	if (ft_strncmp(&map_path[ft_strlen(map_path) - 4], ".ber", 4) != 0)
 	{
-		printf("invalid map format!\n"); // include ft_printf to libft!!
+		ft_printf("invalid map format!\n");
 		exit (1);
+	}
+	// fd = open(map_path, O_RDONLY);
+	// line = 0;
+	// while(1)
+	// {
+	// 	mapstr = get_next_line(fd);
+	// 	if (mapstr == NULL)
+	// 		break ;
+	// 	ft_printf("%s", mapstr);
+	// 	free(mapstr);
+	// 	line ++;
+	// }
+	// close(fd);
+	// ft_printf("\nline lenght: %d\n", line);
+	(void)game;
+	return ;
+}
+
+void	ft_free_ptr(void **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
 	}
 	return ;
 }
@@ -60,8 +88,7 @@ int	main(int argc, char **argv)
 {
 	t_solong	game;
 
-	ft_memset(&game, 0, sizeof(t_solong));
-	ft_validate(argc, argv[1]);
+	ft_validate(&game, argc, argv[1]);
 	ft_mlx_init(&game);
 	game.win_y = TILESIZE * 15;
 	game.win_x = TILESIZE * 20;

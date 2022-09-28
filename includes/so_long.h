@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/09/27 06:06:01 by jusato           ###   ########.fr       */
+/*   Updated: 2022/09/28 04:21:04 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //_____INCLUDES______//
 
 #include <mlx.h>
-#include "libft.h"
+#include "../libs/libft.h"
 
 // Xlib key symbols
 #include <X11/keysym.h>
@@ -24,10 +24,10 @@
 // event names & masks macros
 #include <X11/X.h>
 
-
-//TEST INCLUDES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#include <stdio.h>
-
+// open function
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 //_____DEFINE MACROS___//
 # define TILESIZE	32
@@ -46,6 +46,9 @@ typedef	struct	s_solong
 	void	*win_p;
 	int		win_x;
 	int		win_y;
+
+	int		map_x;
+	int		map_y;
 }				t_solong;
 
 #endif
