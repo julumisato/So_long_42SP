@@ -1,54 +1,64 @@
 # Compilation & Shell Commands
 CC =		cc
-CFLAGS = 	-Wall -Wextra -Werror -I $(HDR_PATH)
+CFLAGS =	-Wall -Wextra -Werror -g -I$(HDR_DIR)
 MKDIR =		mkdir -p
 RM =		rm -f
-
-# Paths
-HDR_PATH =	./includes/
-SRC_PATH =	./srcs/
-LIB_PATH =	./libs/
-OBJ_PATH =	./objs/
-BIN_PATH =	./bin/
+MLXFLAGS =	-lmlx -lXext -lX11
 
 # Files
-NAME =		$(BIN_PATH)so_long
-SRC_FILES =	so_long.c
-SRCS =		$(addprefix $(SRC_PATH), $(SRC_FILES))
-OBJ_FILES =	$(patsubst %.c, %.o, $(SRC_FILES))
-OBJS =		$(addprefix $(OBJ_PATH), $(OBJ_FILES))
-LIB =		$(LIB_PATH)libft.a
+BIN_DIR =	bin/
+NAME =		$(BIN_DIR)so_long
+
+SRC_DIR =	srcs/
+SRC_FILES =	ft_map_utils.c so_long.c
+SRCS =		$(addprefix $(SRC_DIR), $(SRC_FILES))
+
+OBJ_DIR =	objs/
+OBJS =		$(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
+
+LIB_DIR =	lib/
+LIB =		$(LIB_DIR)libft.a
+
+HDR_DIR =	includes/
+
 MAP =		./maps/map.ber
 
 # TARGETS
-all: $(BIN_PATH) $(NAME)
+all: $(BIN_DIR) $(NAME)
 
-$(BIN_PATH):
-	@$(MKDIR) $(BIN_PATH)
+$(BIN_DIR):
+	@$(MKDIR) $(BIN_DIR)
 
-$(NAME): $(LIB) $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lmlx -lXext -lX11 $(LIB)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ $(MLXFLAGS) -o $@ -L $(LIB_DIR) -lft
+	@echo "\n\n       *** So_long compiling done ****        \n\n"
 
 $(LIB):
-	@make -C $(LIB_PATH)
+	@make -C $(LIB_DIR)
 
-$(OBJS): $(SRCS)
-	@$(MKDIR) $(OBJ_PATH)
-	@$(CC) $(CFLAGS) -I $(HDR_PATH) -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIB)
+	@$(MKDIR) $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(NAME)
 	@$(NAME) $(MAP)
 
 clean:
-	@$(RM) $(OBJS)
-	@make fclean -C $(LIB_PATH)
+	@$(RM) $(OBJS) $(SOLONG_A)
+	@rmdir $(OBJ_DIR)
+	@make clean -C $(LIB_DIR)
 
 fclean: clean
 	@$(RM) $(NAME)
+	@rmdir $(BIN_DIR)
+	@make fclean -C $(LIB_DIR)
 
 re: fclean all
 
 valgrind:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(NAME) $(MAP)
+
+runtest: $(NAME)
+	@$(NAME) $(MAP)
 
 .PHONY: all clean fclean re run

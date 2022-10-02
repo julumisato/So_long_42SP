@@ -6,3 +6,4 @@ objs/
 *.a
 so_long
 vgcore.*
+test*
