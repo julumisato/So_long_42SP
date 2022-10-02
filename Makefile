@@ -30,7 +30,7 @@ $(BIN_DIR):
 	@$(MKDIR) $(BIN_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ $(MLXFLAGS) -o $@ -L $(LIB_DIR) -lft
+	@$(CC) $(CFLAGS) $^ $(MLXFLAGS) -o $@ -L $(LIB_DIR) -lft
 	@echo "\n\n       *** So_long compiling done ****        \n\n"
 
 $(LIB):
@@ -56,9 +56,9 @@ fclean: clean
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(NAME) $(MAP)
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(NAME) $(MAP)
 
 runtest: $(NAME)
 	@$(NAME) $(MAP)
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re run valgrind

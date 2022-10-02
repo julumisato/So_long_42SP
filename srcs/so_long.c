@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 08:22:04 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 00:49:42 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,20 @@ void	ft_free_map(t_map *map, char **map_mat)
 	return ;
 }
 
-void	ft_exit(t_solong *game, char *message, int flag)
+void	ft_exit(t_solong *game, char *message)
 {
 	ft_printf("Aborting game.\nMessage: '%s'\n", message);
-	if (flag < 0)
-	{
-		if (game->map.map)
-			ft_free_map(&game->map, game->map.map);
-		exit (0);
-	}
-	return ;
+	if (!game->map.map && game->map.rows > 0)
+		ft_free_map(&game->map, game->map.map);
+	exit (0);
 }
 
 void	ft_init_variables(t_solong *game)
 {
 	game->win_x = 0;
 	game->win_y = 0;
+	game->map.rows = 0;
+	game->map.map = NULL;
 }
 
 int	ft_close(t_solong *game)
@@ -88,8 +86,9 @@ int	ft_init_game(t_solong *game, int argc, char **argv)
 	ft_init_map(game, argc, argv);
 	if (ft_mlx_and_window_init(game) != 0)
 		return (-1);
-	return (0);
 	//implement functions to print images to the screen
+	
+	return (0);
 }
 
 int	main(int argc, char **argv)
