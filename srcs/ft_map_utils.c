@@ -6,17 +6,37 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 02:36:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 08:22:31 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/02 09:01:10 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**ft_alloc_map_memory(t_map *map)
+int	ft_count_map_rows(char *path)
+{
+	int		fd;
+	int		count;
+	char	*line;
+
+	fd = open(path, O_RDONLY);
+	count = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		free(line);
+		count ++;
+	}
+	close (fd);
+	return (count);
+}
+
+char	**ft_alloc_map_memory(t_map *map, char *path)
 {
 	char	**mat;
 
-	map->rows = 10; //ft_count_map_rows();
+	map->rows = ft_count_map_rows(path);
 	mat = malloc((map->rows + 1) * sizeof(char *));
 	if (!mat)
 		return (NULL);
@@ -30,7 +50,7 @@ char	**ft_scan_map(t_map *map, char *map_path)
 	int		fd;
 	int		i;
 
-	map_mat = ft_alloc_map_memory(map);
+	map_mat = ft_alloc_map_memory(map, map_path);
 	if (!map_mat)
 		return (NULL);
 	fd = open(map_path, O_RDONLY);
