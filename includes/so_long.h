@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 06:41:03 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/02 07:25:14 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_map
 	char	**map;
 	int		map_x;
 	int		map_y;
-	char	*path;
 	int		rows;
 	int		columns;
 }				t_map;
@@ -55,15 +54,22 @@ typedef	struct	s_solong
 	t_map	map;
 }				t_solong;
 
+// initialization 
+void	ft_init_variables(t_solong *game);
+
+int		ft_init_game(t_solong *game, int argc, char **argv);
+void	ft_init_map(t_solong *game, int argc, char **argv);
+int		ft_mlx_and_window_init(t_solong *game);
+
+char	**ft_scan_map(t_map *map, char *map_path);
+
+// hooking utils
+int		ft_handle_key(int key, t_solong *game);
+
+// finalization utils
+int		ft_close(t_solong *game);
 void	ft_free_ptr(void **ptr);
 void	ft_free_map(t_map *map, char **map_mat);
 void	ft_exit(t_solong *game, char *message, int flag);
-void	ft_mlx_init(t_solong *game);
-void	ft_init_variables(t_solong *game);
-char	**ft_scan_map(t_map *map);
-void	ft_init_map(t_solong *game, int argc, char **argv);
-int		ft_close(t_solong *game);
-int		ft_handle_key(int key, t_solong *game);
-void	ft_init_game(t_solong *game, int argc, char **argv);
 
 #endif
