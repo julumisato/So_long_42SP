@@ -16,7 +16,7 @@ SRCS =		$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_DIR =	objs/
 OBJS =		$(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
-LIB_DIR =	lib/
+LIB_DIR =	libft/
 LIB =		$(LIB_DIR)libft.a
 
 HDR_DIR =	includes/

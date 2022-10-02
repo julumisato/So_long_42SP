@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 02:55:29 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/02 06:41:03 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //_____INCLUDES______//
 
 #include <mlx.h>
-#include "../lib/libft.h"
+#include "../libft/libft.h"
 
 // Xlib key symbols
 #include <X11/keysym.h>
