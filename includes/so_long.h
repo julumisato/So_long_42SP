@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 00:49:53 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 01:51:39 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <fcntl.h>
 
 //_____DEFINE MACROS___//
-# define TILESIZE	32
+# define TILESIZE	64
 
 //_____TYPEDEFS_______//
 
@@ -62,8 +62,8 @@ void	ft_init_map(t_solong *game, int argc, char **argv);
 int		ft_mlx_and_window_init(t_solong *game);
 
 char	**ft_scan_map(t_solong *game, char *map_path);
-char	**ft_alloc_map_memory(t_map *map, char *path);
-int		ft_count_map_rows(char *path);
+char	**ft_alloc_map_memory(t_solong *game, char *path);
+void	ft_count_map_size(t_solong *game, char *path);
 
 // hooking utils
 int		ft_handle_key(int key, t_solong *game);

@@ -6,40 +6,52 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 02:36:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 00:50:18 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 01:50:35 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_count_map_rows(char *path)
+void	ft_count_map_size(t_solong *game, char *path)
 {
 	int		fd;
-	int		count;
+	int		rows;
 	char	*line;
 
 	fd = open(path, O_RDONLY);
-	count = 0;
+	rows = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break;
+		if (game->map.columns == 0)
+			game->map.columns = ft_strlen(line) - 1;
 		free(line);
-		count ++;
+		rows ++;
 	}
+	game->map.rows = rows;
 	close (fd);
-	return (count);
+	return ;
 }
 
-char	**ft_alloc_map_memory(t_map *map, char *path)
+char	**ft_alloc_map_memory(t_solong *game, char *path)
 {
 	char	**mat;
+	int		i;
 
-	map->rows = ft_count_map_rows(path);
-	mat = malloc((map->rows + 1) * sizeof(char *));
+	ft_count_map_size(game, path);
+	mat = ft_calloc((game->map.rows + 1), sizeof(char *));
 	if (!mat)
 		return (NULL);
+	i = 0;
+	while (i <= game->map.rows)
+	{
+		mat[i] = ft_calloc((game->map.columns + 1), sizeof(char));
+		if (!mat[i])
+			return(NULL);
+		i ++;
+	}
 	return (mat);
 }
 
@@ -53,7 +65,7 @@ char	**ft_scan_map(t_solong *game, char *map_path)
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		ft_exit(game, "Failed to open file.");
-	map_mat = ft_alloc_map_memory(&game->map, map_path);
+	map_mat = ft_alloc_map_memory(game, map_path);
 	if (!map_mat)
 		return (NULL);
 	i = 0;
@@ -62,7 +74,7 @@ char	**ft_scan_map(t_solong *game, char *map_path)
 		aux = get_next_line(fd);
 		if (!aux)
 			break ;
-		map_mat[i] = aux;
+		ft_strlcpy(map_mat[i], aux, game->map.columns);
 		free(aux);
 		i ++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 00:49:42 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 01:51:18 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_free_map(t_map *map, char **map_mat)
 void	ft_exit(t_solong *game, char *message)
 {
 	ft_printf("Aborting game.\nMessage: '%s'\n", message);
-	if (!game->map.map && game->map.rows > 0)
+	if (game->map.map && game->map.rows > 0)
 		ft_free_map(&game->map, game->map.map);
 	exit (0);
 }
@@ -46,6 +46,7 @@ void	ft_init_variables(t_solong *game)
 	game->win_x = 0;
 	game->win_y = 0;
 	game->map.rows = 0;
+	game->map.columns = 0;
 	game->map.map = NULL;
 }
 
@@ -73,8 +74,8 @@ int	ft_mlx_and_window_init(t_solong *game)
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return (-1);
-	game->win_y = TILESIZE * 12;
-	game->win_x = TILESIZE * 20;
+	game->win_y = TILESIZE * game->map.rows;
+	game->win_x = TILESIZE * game->map.columns;
 	game->win_p = mlx_new_window(game->mlx, game->win_x, game->win_y, "so_long game window");
 	if (game->win_p == NULL)
 		return (-1);
