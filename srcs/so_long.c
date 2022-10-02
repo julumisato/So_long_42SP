@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 07:43:49 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/02 08:00:14 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_free_map(t_map *map, char **map_mat)
 	int	i;
 
 	i = 0;
-	while(i <= map->rows)
+	while (i <= map->rows)
 		free(map_mat[i ++]);
 	free(map_mat);
 	return ;
@@ -51,7 +51,7 @@ void	ft_init_variables(t_solong *game)
 	game->win_y = 0;
 }
 
-int		ft_close(t_solong *game)
+int	ft_close(t_solong *game)
 {
 	mlx_destroy_window(game->mlx, game->win_p);
 	game->win_p = NULL;
@@ -63,14 +63,14 @@ int		ft_close(t_solong *game)
 	exit (0);
 }
 
-int		ft_handle_key(int key, t_solong *game)
+int	ft_handle_key(int key, t_solong *game)
 {
 	if (key == XK_Escape || key == XK_q)
 		ft_close(game);
 	return (0);
 }
 
-int		ft_mlx_and_window_init(t_solong *game)
+int	ft_mlx_and_window_init(t_solong *game)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)

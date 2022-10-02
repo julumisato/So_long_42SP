@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 03:55:15 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 07:25:14 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/02 07:58:11 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 //_____INCLUDES______//
 
-#include <mlx.h>
-#include "../libft/libft.h"
+# include <mlx.h>
+# include "../libft/libft.h"
 
 // Xlib key symbols
-#include <X11/keysym.h>
+# include <X11/keysym.h>
 
 // event names & masks macros
-#include <X11/X.h>
+# include <X11/X.h>
 
 // open function
 # include <sys/types.h>
@@ -43,7 +43,7 @@ typedef struct s_map
 	int		columns;
 }				t_map;
 
-typedef	struct	s_solong
+typedef struct s_solong
 {
 	void	*mlx;
 
