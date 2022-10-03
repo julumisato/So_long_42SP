@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 02:52:27 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 07:59:08 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 21:58:40 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	ft_init_images(t_solong *game)
 	int		x;
 	int		y;
 
+	//img = ft_calloc(1, sizeof(void *));
 	img = mlx_xpm_file_to_image(&game->mlx, "assets/img.xpm", &x, &y);
 	if (!img)
-		ft_printf("no success loading wall img\n");
+		ft_printf("\n\n!! NULL img !!\n\n");
+	//free(img);
 	//imgs->wall.px = mlx_get_data_addr(imgs->wall.ptr, &imgs->wall.bpp, &imgs->wall.l_size, &imgs->wall.endian);
 	//imgs->grass.ptr = mlx_xpm_file_to_image(mlx, GRASS_PATH, &imgs->x, &imgs->y);
 	//if (imgs->grass.ptr == NULL)

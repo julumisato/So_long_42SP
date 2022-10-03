@@ -3,14 +3,14 @@ CC =		cc
 CFLAGS =	-Wall -Wextra -Werror -g -I$(HDR_DIR)
 MKDIR =		mkdir -p
 RM =		rm -f
-MLXFLAGS =	-lmlx -lXext -lX11
+MLXFLAGS =	-lmlx -lX11 -Ilmlx -lXext
 
 # Files
 BIN_DIR =	bin/
 NAME =		$(BIN_DIR)so_long
 
 SRC_DIR =	srcs/
-SRC_FILES =	ft_map_utils.c so_long.c ft_image_utils.c
+SRC_FILES =	ft_map_utils.c ft_image_utils.c
 SRCS =		$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR =	objs/
@@ -30,12 +30,13 @@ $(BIN_DIR):
 	@$(MKDIR) $(BIN_DIR)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $^ $(MLXFLAGS) -o $@ -L $(LIB_DIR) -lft
+	@$(CC) $(CFLAGS) $(SRC_DIR)so_long.c $^ $(MLXFLAGS) -o $@ -L $(LIB_DIR) -lft
 	@echo "\n\n     *** So_long compiling done ****\n\n"
 
 $(LIB):
 	@make -C $(LIB_DIR)
 
+#$(OBJS): $(SRCS)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIB)
 	@$(MKDIR) $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -44,7 +45,7 @@ run: $(NAME)
 	@$(NAME) $(MAP)
 
 clean:
-	@$(RM) $(OBJS) $(SOLONG_A)
+	@$(RM) $(OBJS)
 	@rmdir $(OBJ_DIR)
 	@make clean -C $(LIB_DIR)
 
