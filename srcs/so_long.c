@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 01:51:18 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 08:03:50 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 void	ft_free_ptr(void **ptr)
 {
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
+	free(*ptr);
+	*ptr = NULL;
 	return ;
 }
 
@@ -28,7 +25,10 @@ void	ft_free_map(t_map *map, char **map_mat)
 
 	i = 0;
 	while (i <= map->rows)
-		free(map_mat[i ++]);
+	{
+		free(map_mat[i]);
+		i ++;
+	}
 	free(map_mat);
 	return ;
 }
@@ -48,14 +48,18 @@ void	ft_init_variables(t_solong *game)
 	game->map.rows = 0;
 	game->map.columns = 0;
 	game->map.map = NULL;
+	// game->imgs.wall.sizex = 0;
+	// game->imgs.wall.sizey = 0;
 }
 
 int	ft_close(t_solong *game)
 {
+	ft_free_map(&game->map, game->map.map);
 	mlx_destroy_window(game->mlx, game->win_p);
 	game->win_p = NULL;
 	//destroy images when implemented
 	//free allocated memory
+//	ft_free_map(&game->map, game->map.map);
 	//ft_free_map(&game->map, game->map.map);
 	mlx_destroy_display(game->mlx);//if display initiated, destroy and free mlx ptr too
 	ft_free_ptr((void *)&game->mlx);
@@ -73,12 +77,12 @@ int	ft_mlx_and_window_init(t_solong *game)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
-		return (-1);
+		ft_exit(game, "failed to initiate mlx.");
 	game->win_y = TILESIZE * game->map.rows;
 	game->win_x = TILESIZE * game->map.columns;
 	game->win_p = mlx_new_window(game->mlx, game->win_x, game->win_y, "so_long game window");
 	if (game->win_p == NULL)
-		return (-1);
+		ft_exit(game, "failed to initiate window.");
 	return (0);
 }
 
@@ -88,7 +92,8 @@ int	ft_init_game(t_solong *game, int argc, char **argv)
 	if (ft_mlx_and_window_init(game) != 0)
 		return (-1);
 	//implement functions to print images to the screen
-	
+	//ft_init_images(game);
+	//ft_print_images(game);
 	return (0);
 }
 

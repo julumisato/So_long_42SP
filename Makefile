@@ -10,7 +10,7 @@ BIN_DIR =	bin/
 NAME =		$(BIN_DIR)so_long
 
 SRC_DIR =	srcs/
-SRC_FILES =	ft_map_utils.c so_long.c
+SRC_FILES =	ft_map_utils.c so_long.c ft_image_utils.c
 SRCS =		$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR =	objs/
@@ -31,7 +31,7 @@ $(BIN_DIR):
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $^ $(MLXFLAGS) -o $@ -L $(LIB_DIR) -lft
-	@echo "\n\n       *** So_long compiling done ****        \n\n"
+	@echo "\n\n     *** So_long compiling done ****\n\n"
 
 $(LIB):
 	@make -C $(LIB_DIR)

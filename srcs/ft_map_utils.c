@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 02:36:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 01:50:35 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/03 02:48:48 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_count_map_size(t_solong *game, char *path)
 		if (!line)
 			break;
 		if (game->map.columns == 0)
-			game->map.columns = ft_strlen(line) - 1;
+			game->map.columns = ft_strlen(line);
 		free(line);
 		rows ++;
 	}
@@ -47,7 +47,7 @@ char	**ft_alloc_map_memory(t_solong *game, char *path)
 	i = 0;
 	while (i <= game->map.rows)
 	{
-		mat[i] = ft_calloc((game->map.columns + 1), sizeof(char));
+		mat[i] = ft_calloc(game->map.columns, sizeof(char));
 		if (!mat[i])
 			return(NULL);
 		i ++;
@@ -95,6 +95,5 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	if (!map_m)
 		ft_exit(game, "Failed to read map! File not found.");
 	game->map.map = map_m;
-	free(map_m);
 	return ;
 }
