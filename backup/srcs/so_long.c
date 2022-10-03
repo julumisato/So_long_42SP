@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 01:45:52 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/03 21:47:57 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/04 01:08:14 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_exit(t_solong *game, char *message)
 	ft_printf("Aborting game.\nMessage: '%s'\n", message);
 	if (game->map.map && game->map.rows > 0)
 		ft_free_map(&game->map, game->map.map);
+	
+	//free(game.mlx)
 	exit (0);
 }
 
