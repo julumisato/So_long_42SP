@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:46:16 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/05 05:51:10 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 06:09:28 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,42 @@ int	ft_mlx_and_window_init(t_solong *game)
 	return (0);
 }
 
+void	ft_paint_map(t_solong *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map.mapp[i])
+	{
+		j = 0;
+		while (game->map.mapp[i][j])
+		{
+			if (game->map.mapp[i][j] == '1')
+				mlx_put_image_to_window(game->mlx, game->win, game->imgs.wall.ptr, j * TILESIZE, i * TILESIZE);
+			else
+				mlx_put_image_to_window(game->mlx, game->win, game->imgs.grass.ptr, j * TILESIZE, i * TILESIZE);
+			j ++;
+		}
+		i ++;
+	}
+	return ;
+}
+
 int	ft_init_game(t_solong *game, int argc, char **argv)
 {
 	ft_init_map(game, argc, argv);	//Reading map
 	if (ft_mlx_and_window_init(game) != 0)	//init mlx & init window;
 		return (-1);
-// //init images
+// //init images -> implement functions to initiate all images
 	game->imgs.wall.ptr = mlx_xpm_file_to_image(game->mlx, WALL_PATH, &game->imgs.wall.x, &game->imgs.wall.y);
 	game->imgs.grass.ptr = mlx_xpm_file_to_image(game->mlx, GRASS_PATH, &game->imgs.grass.x, &game->imgs.grass.y);
-// 	if (!game->imgs.wall.ptr || !game->imgs.grass.ptr)
-// 		return(ft_printf("no image!!\n"));
-// //print images
-	mlx_put_image_to_window(game->mlx, game->win, game->imgs.wall.ptr, 0 * TILESIZE, 0 * TILESIZE);
-	mlx_put_image_to_window(game->mlx, game->win, game->imgs.grass.ptr, 1 * TILESIZE, 1 * TILESIZE);
+	if (!game->imgs.wall.ptr || !game->imgs.grass.ptr)
+		return(ft_printf("no image!!\n"));
+// //print images -> implement function to print the whole map on the window
+	ft_paint_map(game);
+	// mlx_put_image_to_window(game->mlx, game->win, game->imgs.wall.ptr, 0 * TILESIZE, 0 * TILESIZE);
+	// mlx_put_image_to_window(game->mlx, game->win, game->imgs.grass.ptr, 1 * TILESIZE, 1 * TILESIZE);
 	return (0);
 }
 
@@ -57,15 +80,6 @@ int	main(int argc, char **argv)
 	ft_init_variables(&game);
 	if (ft_init_game(&game, argc, argv) != 0)
 		return (ft_printf("error while initializing the game"));
-
-	//test
-	// game.imgs.wall.ptr = mlx_xpm_file_to_image(game.mlx, WALL_PATH, &game.imgs.wall.x, &game.imgs.wall.y);
-	// game.imgs.grass.ptr = mlx_xpm_file_to_image(game.mlx, GRASS_PATH, &game.imgs.grass.x, &game.imgs.grass.y);
-	// if (!game.imgs.wall.ptr || !game.imgs.grass.ptr)
-	// 	return(ft_printf("no image!!\n"));
-	// mlx_put_image_to_window(game.mlx, game.win, game.imgs.wall.ptr, 0 * TILESIZE, 0 * TILESIZE);
-	// mlx_put_image_to_window(game.mlx, game.win, game.imgs.grass.ptr, 1 * TILESIZE, 1 * TILESIZE);
-
 	ft_define_hooks(&game);
 	mlx_loop(game.mlx);
 	// ft_free_map(&game.map, game.map.mapp);

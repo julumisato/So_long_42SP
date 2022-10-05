@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/05 05:00:17 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 06:19:22 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_count_map_size(t_solong *game, char *path)
 		if (!line)
 			break;
 		if (game->map.cols == 0)
-			game->map.cols = ft_strlen(line);
+			game->map.cols = ft_strlen(line) - 1;
 		free(line);
 		rows ++;
 	}
@@ -69,7 +69,7 @@ char	**ft_alloc_map_memory(t_solong *game, char *path)
 	i = 0;
 	while (i < game->map.rows)
 	{
-		mat[i] = ft_calloc(game->map.cols, sizeof(char));
+		mat[i] = ft_calloc(game->map.cols + 1, sizeof(char));
 		if (!mat[i])
 			return(NULL);
 		i ++;
@@ -97,7 +97,7 @@ char	**ft_scan_map(t_solong *game, char *map_path)
 		aux = get_next_line(fd);
 		if (!aux)
 			break ;
-		ft_strlcpy(map_mat[i], aux, game->map.cols);
+		ft_strlcpy(map_mat[i], aux, game->map.cols + 1);
 		free(aux);
 		i ++;
 	}

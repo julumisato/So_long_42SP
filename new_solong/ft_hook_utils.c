@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/05 05:51:36 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 05:55:34 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_free_ptr(void **ptr)
 
 int	ft_close(t_solong *game)
 {
+	//Implement function to destroy all images when closing the game
 	if (game->imgs.wall.ptr != NULL)
 		mlx_destroy_image(game->mlx, game->imgs.wall.ptr);
 	if (game->imgs.grass.ptr != NULL)
