@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/04 01:38:14 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 04:33:14 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_define_hooks(t_solong *game)
 {
 	mlx_hook(game->win, DestroyNotify, NoEventMask, &ft_close, game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, &ft_handle_key, game);
-	//mlx_loop_hook(game->mlx, ft_refresh, game)
+	//mlx_loop_hook(game->mlx, ft_refresh, game);
 }
 
 int	ft_handle_key(int key, t_solong *game) //have to implement movement too
@@ -36,7 +36,6 @@ void	ft_free_ptr(void **ptr)
 
 int	ft_close(t_solong *game)
 {
-	//free(game->map.mapp);
 	ft_free_map(&game->map, game->map.mapp);
 	// if (game->wall.ptr)
 	// 	mlx_destroy_image(game->mlx, game->wall.ptr);
