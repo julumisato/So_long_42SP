@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/05 04:33:14 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 05:51:36 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void	ft_free_ptr(void **ptr)
 
 int	ft_close(t_solong *game)
 {
+	if (game->imgs.wall.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->imgs.wall.ptr);
+	if (game->imgs.grass.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->imgs.grass.ptr);
 	ft_free_map(&game->map, game->map.mapp);
-	// if (game->wall.ptr)
-	// 	mlx_destroy_image(game->mlx, game->wall.ptr);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);//if display initiated, destroy and free mlx ptr too
 	free(game->mlx);
-	// ft_free_ptr((void *)&game->mlx);
 	exit (0);
 }

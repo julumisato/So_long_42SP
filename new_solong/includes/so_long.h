@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/04 01:01:47 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 05:40:42 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <mlx.h>
+#include <stdlib.h>
 //# include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
@@ -32,11 +33,17 @@
 # define WALL_PATH "assets/wall.xpm"
 # define GRASS_PATH "assets/grass.xpm"
 
-typedef struct s_imgs
+typedef struct s_util
 {
 	void	*ptr;
 	int		x;
 	int		y;
+}				t_util;
+
+typedef struct s_imgs
+{
+	t_util	wall;
+	t_util	grass;
 }				t_imgs;
 
 typedef struct s_map
@@ -53,8 +60,7 @@ typedef struct s_solong
 	int		win_x;
 	int		win_y;
 	t_map	map;
-	t_imgs	wall;
-	t_imgs	grass;
+	t_imgs	imgs;
 }				t_solong;
 
 

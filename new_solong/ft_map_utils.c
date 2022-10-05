@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/04 01:15:18 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/05 05:00:17 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	if (!map_m)
 		ft_exit(game, "Failed to read map! File not found.");
 	game->map.mapp = map_m;
+	//implement map checking functions here
+		//if not valid, free map and end the program;
 	return ;
 }
