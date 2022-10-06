@@ -6,7 +6,7 @@ MLXFLAGS =	-lmlx -Ilmlx -lX11 -lXext
 ##-I$(MLX_DIR) -L $(MLX_DIR) 
 NAME	=	so_long
 
-SRCS	=	so_long.c ft_map_utils.c ft_hook_utils.c
+SRCS	=	so_long.c ft_init_game.c ft_map_init.c ft_hook_utils.c ft_close_game.c
 OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 OBJ_DIR =	objs/
 INCL_DIR =	includes/

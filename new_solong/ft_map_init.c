@@ -6,26 +6,11 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/06 06:13:06 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/06 06:49:59 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_free_map(t_map *map, char **map_mat)
-{
-	int	i;
-
-	i = 0;
-	while (i <= map->rows)
-	{
-		free(map_mat[i]);
-		i ++;
-	}
-	free(map_mat);
-	return ;
-}
-
 
 void	ft_count_map_size(t_solong *game, char *path)
 {
@@ -113,6 +98,7 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	game->map.mapp = map_m;
 	game->map.init ++;
 	//implement map checking functions here
-		//if not valid, free map and end the program;
+	//if (ft_map_validation(game) != 0)
+		//ft_close(game);	//if not valid, free map and end the program;
 	return ;
 }
