@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_map_validation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 20:46:16 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/06 07:15:12 by jusato           ###   ########.fr       */
+/*   Created: 2022/10/06 07:01:43 by jusato            #+#    #+#             */
+/*   Updated: 2022/10/06 07:07:23 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_init_variables(t_solong *game)
+int	ft_map_validation(t_solong *game)
 {
-	game->win_x = 0;
-	game->win_y = 0;
-	game->init = 0;
-	game->map.rows = 0;
-	game->map.cols = 0;
-	game->map.init = 0;
-	game->imgs.init = 0;
-}
-
-int	main(int argc, char **argv)
-{
-	t_solong	game;
-
-	ft_init_variables(&game);
-	if (ft_init_game(&game, argc, argv) != 0)
-		return (ft_close(&game, "error while initializing the game"));
-	ft_define_hooks(&game);
-	mlx_loop(game.mlx);
-	return (0);
+	/*
+	The map must be constructed with: walls, collectibles and free spaces
+	only 5 valid chars: 0 (Empty), 1 (wall), C (collect), E (exit), P(player start position)
+	Must contain at least 1 Exit, 1 collectible, 1 start position.
+	(must not have duplicated exit/start)
+	must be rectangular,
+	must be surrounded by walls
+	must be a valid path in the map
+	
+	
+	*/
 }

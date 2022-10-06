@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/06 06:57:59 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/06 07:18:42 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ void	ft_define_hooks(t_solong *game);
 int		ft_handle_key(int key, t_solong *game);
 
 /*         ft_close_game.c*/
-int		ft_close(t_solong *game);
+int		ft_close(t_solong *game, char *message);
 void	ft_free_map(t_map *map, char **map_mat);
-void	ft_exit(t_solong *game, char *message);
 
 #endif

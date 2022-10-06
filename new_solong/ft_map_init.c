@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_utils.c                                     :+:      :+:    :+:   */
+/*   ft_map_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/06 06:49:59 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/06 07:16:56 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**ft_scan_map(t_solong *game, char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game, "Failed to open file.");
+		ft_close(game, "Failed to open file.");
 	map_mat = ft_alloc_map_memory(game, map_path);
 	if (!map_mat)
 		return (NULL);
@@ -89,16 +89,16 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	char	**map_m;
 
 	if (argc != 2)
-		ft_exit(game, "Invalid input! Please input only one map path argument.");
+		ft_close(game, "Invalid input! Please input only one map path argument.");
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4) != 0)
-		ft_exit(game, "Invalid map format! only '.ber' permitted.");
+		ft_close(game, "Invalid map format! only '.ber' permitted.");
 	map_m = ft_scan_map(game, argv[1]);
 	if (!map_m)
-		ft_exit(game, "Failed to read map! File not found.");
+		ft_close(game, "Failed to read map! File not found.");
 	game->map.mapp = map_m;
 	game->map.init ++;
 	//implement map checking functions here
 	//if (ft_map_validation(game) != 0)
-		//ft_close(game);	//if not valid, free map and end the program;
+		//ft_close(game, "Invalid map!!");	//if not valid, free map and end the program;
 	return ;
 }

@@ -13,7 +13,7 @@ INCL_DIR =	includes/
 LIB		=	libft/libft.a
 # MLX		=	$(MLX_DIR)libmlx.a
 # MLX_DIR	=	minilibx/
-MAP		=	maps/map.ber
+MAP		=	maps/test.ber
 
 all: $(NAME)
 
