@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/05 05:40:42 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/06 06:22:41 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include <mlx.h>
-#include <stdlib.h>
+# include <stdlib.h> // for exit() function
 //# include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
@@ -42,8 +42,12 @@ typedef struct s_util
 
 typedef struct s_imgs
 {
+	int		init;
 	t_util	wall;
 	t_util	grass;
+	//t_util	player;
+	//t_util	collect;
+	//t_util	goal;
 }				t_imgs;
 
 typedef struct s_map
@@ -51,6 +55,7 @@ typedef struct s_map
 	char	**mapp;
 	int		rows;
 	int		cols;
+	int		init;
 }				t_map;
 
 typedef struct s_solong
@@ -75,8 +80,8 @@ char	**ft_scan_map(t_solong *game, char *map_path);
 char	**ft_alloc_map_memory(t_solong *game, char *path);
 void	ft_count_map_size(t_solong *game, char *path);
 
-void	ft_init_images(t_solong *game);
-void	ft_print_images(t_solong *game);
+int		ft_get_images(t_solong *game);
+void	ft_print_map(t_solong *game);
 
 
 // hooking utils

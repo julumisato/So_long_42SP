@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/05 06:19:22 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/06 06:13:06 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ void	ft_free_map(t_map *map, char **map_mat)
 	return ;
 }
 
-void	ft_exit(t_solong *game, char *message)
-{
-	ft_printf("Aborting game.\nMessage: '%s'\n", message);
-	if (game->map.mapp && game->map.rows > 0)
-		ft_free_map(&game->map, game->map.mapp);
-	exit (0);
-}
 
 void	ft_count_map_size(t_solong *game, char *path)
 {
@@ -118,6 +111,7 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	if (!map_m)
 		ft_exit(game, "Failed to read map! File not found.");
 	game->map.mapp = map_m;
+	game->map.init ++;
 	//implement map checking functions here
 		//if not valid, free map and end the program;
 	return ;
