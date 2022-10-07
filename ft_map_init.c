@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 03:29:34 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 04:48:10 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_count_map_size(t_solong *game, char *path)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		if (game->map.cols == 0)
 			game->map.cols = ft_strlen(line) - 1;
 		free(line);
@@ -49,7 +49,7 @@ char	**ft_alloc_map_memory(t_solong *game, char *path)
 	{
 		mat[i] = ft_calloc(game->map.cols + 1, sizeof(char));
 		if (!mat[i])
-			return(NULL);
+			return (NULL);
 		i ++;
 	}
 	mat[i] = NULL;
@@ -89,7 +89,7 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	char	**map_m;
 
 	if (argc != 2)
-		ft_close(game, "Invalid input! Please input only one map path argument.");
+		ft_close(game, "Please input only one map path argument.");
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4) != 0)
 		ft_close(game, "Invalid map format! only '.ber' permitted.");
 	map_m = ft_scan_map(game, argv[1]);
@@ -97,8 +97,6 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 		ft_close(game, "Failed to read map! File not found.");
 	game->map.mapp = map_m;
 	game->map.init ++;
-	//implement map checking functions here
 	ft_map_validation(game);
-		//ft_close(game, "Invalid map!!");	//if not valid, free map and end the program;
 	return ;
 }

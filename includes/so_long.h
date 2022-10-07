@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 03:24:44 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 05:09:12 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define TILESIZE 32
 # define WALL_PATH "assets/wall.xpm"
 # define GRASS_PATH "assets/grass.xpm"
+# define PLAYER_PATH "assets/player.xpm"
+# define COLLECT_PATH "assets/collect.xpm"
+# define GOAL_PATH "assets/goal.xpm"
 # define VALID_CHAR "10CEP"
 
 typedef struct s_util
@@ -46,9 +49,11 @@ typedef struct s_imgs
 	int		init;
 	t_util	wall;
 	t_util	grass;
-	//t_util	player;
-	//t_util	collect;
-	//t_util	goal;
+	t_util	player;
+	int		player_x;
+	int		player_y;
+	t_util	collect;
+	t_util	goal;
 }				t_imgs;
 
 typedef struct s_map
@@ -72,7 +77,6 @@ typedef struct s_solong
 	t_map	map;
 	t_imgs	imgs;
 }				t_solong;
-
 
 /*         so_long.c              */
 void	ft_init_variables(t_solong *game);

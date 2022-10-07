@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 06:48:53 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/06 07:20:48 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 05:07:23 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_close(t_solong *game, char *message)
 	{
 		mlx_destroy_image(game->mlx, game->imgs.wall.ptr);
 		mlx_destroy_image(game->mlx, game->imgs.grass.ptr);
-		//mlx_destroy_image(game->mlx, game->imgs.player.ptr);
-		//mlx_destroy_image(game->mlx, game->imgs.collect.ptr);
-		//mlx_destroy_image(game->mlx, game->imgs.goal.ptr);
+		mlx_destroy_image(game->mlx, game->imgs.player.ptr);
+		mlx_destroy_image(game->mlx, game->imgs.collect.ptr);
+		mlx_destroy_image(game->mlx, game->imgs.goal.ptr);
 	}
 	if (game->init == 1)
 	{

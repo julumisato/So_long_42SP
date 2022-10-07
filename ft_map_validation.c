@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 07:01:43 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 04:27:09 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 05:11:22 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,27 @@ void	ft_char_validation(t_solong *game)
 		while (j < game->map.cols)
 		{
 			if (!ft_strchr(VALID_CHAR, game->map.mapp[i][j]))
-				ft_close(game, "There's invalid character in the map! (Allowed chars: '10CEP')");
+				ft_close(game, "Invalid char in the map! (Allowed: '10CEP')");
 			if (game->map.mapp[i][j] == 'C')
 				game->map.c_n ++;
 			if (game->map.mapp[i][j] == 'E')
 				game->map.e_n ++;
 			if (game->map.mapp[i][j] == 'P')
+			{
 				game->map.p_n ++;
+				game->imgs.player_x = i;
+				game->imgs.player_y = j;
+			}
 			j ++;
 		}
 		i ++;
 	}
-	return ;
 }
 
 void	ft_check_map_elements(t_solong *game)
 {
 	if (game->map.c_n < 1)
-		ft_close(game, "The map have to contain at least one collectible element!");
+		ft_close(game, "The map has contain at least one collectible element!");
 	if (game->map.e_n != 1)
 		ft_close(game, "Only one exit element is allowed!");
 	if (game->map.p_n != 1)
@@ -49,26 +52,22 @@ void	ft_check_map_elements(t_solong *game)
 	return ;
 }
 
-
 void	ft_map_validation(t_solong *game)
 {
 	int	i;
-	/* The map must be constructed with: walls, collectibles and free spaces
-	only 5 valid chars: 0 (Empty), 1 (wall), C (collect), E (exit), P(player start position) */
+
 	ft_char_validation(game);
-	/* Must contain at least 1 Exit, 1 collectible, 1 start position.
-	(must not have duplicated exit/start)*/
 	ft_check_map_elements(game);
-	/* must be rectangular*/
 	if (game->map.rows == game->map.cols)
 		ft_close(game, "The map must be rectangular!");
-	/* must be surrounded by walls*/
-	if (ft_diff_chrstr(game->map.mapp[0], '1') != NULL || ft_diff_chrstr(game->map.mapp[game->map.rows - 1], '1') != NULL)
+	if (ft_diff_chrstr(game->map.mapp[0], '1') != NULL
+		|| ft_diff_chrstr(game->map.mapp[game->map.rows - 1], '1') != NULL)
 		ft_close(game, "Map has to be surrounded by walls!");
 	i = 1;
 	while (i < game->map.rows - 1)
 	{
-		if (game->map.mapp[i][0] != '1' || game->map.mapp[i][game->map.cols - 1] != '1')
+		if (game->map.mapp[i][0] != '1' ||
+			game->map.mapp[i][game->map.cols - 1] != '1')
 			ft_close(game, "Map has to be surrounded by walls!");
 		i ++;
 	}
