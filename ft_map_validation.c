@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 07:01:43 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 04:15:04 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 04:27:09 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,6 @@ void	ft_check_map_elements(t_solong *game)
 	return ;
 }
 
-void	*ft_diff_chrstr(char *str, int c)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < ft_strlen(str))
-	{
-		if (str[i] != c)
-			return (&str[i]);
-		i ++;
-	}
-	return (NULL);
-}
 
 void	ft_map_validation(t_solong *game)
 {

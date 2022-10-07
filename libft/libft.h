@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 22:06:05 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/02 07:58:44 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 04:28:32 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,8 @@ void		ft_printf_char(t_printf *param, char c);
 void		ft_printf_num(t_printf *param, int value);
 void		ft_printf_str_width(t_printf *param, char *str);
 void		ft_printf_ptr_width(t_printf *param, char *str);
+
+/* new utils so_long */
+void	*ft_diff_chrstr(char *str, int c);
 
 #endif

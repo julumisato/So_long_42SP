@@ -12,13 +12,14 @@ OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 OBJ_DIR =	objs/
 INCL_DIR =	includes/
 LIB		=	libft/libft.a
+LIB_DIR	=	libft/
 # MLX		=	$(MLX_DIR)libmlx.a
 # MLX_DIR	=	minilibx/
-MAP		=	maps/test.ber
+MAP		=	maps/map2.ber
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX)
+$(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(MLXFLAGS) -o $(NAME)
 	@echo "\n\n     **** So_long compiling done ****\n\n"
 
@@ -26,12 +27,16 @@ $(OBJ_DIR)%.o: %.c $(LIB)
 	@$(MKDIR) $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+$(LIB):
+	make -C $(LIB_DIR)
+
 clean:
 	@$(RM) $(OBJS)
-	@rmdir $(OBJ_DIR)
+	@make clean -C $(LIB_DIR)
 
 fclean: clean
 	@$(RM) $(NAME)
+	@make fclean -C $(LIB_DIR)
 
 re: fclean all
 

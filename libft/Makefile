@@ -6,7 +6,7 @@
 #    By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 21:19:04 by jusato            #+#    #+#              #
-#    Updated: 2022/10/02 02:00:51 by jusato           ###   ########.fr        #
+#    Updated: 2022/10/07 04:29:44 by jusato           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c \
 		ft_lstadd_front.c ft_lstsize.c\
 		ft_printf.c ft_printf_formats.c ft_printf_utils_1.c\
-		ft_printf_utils_2.c get_next_line.c
+		ft_printf_utils_2.c get_next_line.c ft_diff_chrstr.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -34,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "\n------Compiling Libft-----------\n"
+	@echo "\n------Libft Compiled-----------\n"
 
 $(OBJS): $(SRCS)
 	@$(CC) $(FLAGS) -c $(SRCS) -I.
