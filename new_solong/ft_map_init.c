@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:20:10 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/06 07:16:56 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 03:29:34 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	ft_init_map(t_solong *game, int argc, char **argv)
 	game->map.mapp = map_m;
 	game->map.init ++;
 	//implement map checking functions here
-	//if (ft_map_validation(game) != 0)
+	ft_map_validation(game);
 		//ft_close(game, "Invalid map!!");	//if not valid, free map and end the program;
 	return ;
 }
