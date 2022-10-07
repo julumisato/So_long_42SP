@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 05:09:12 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 05:50:40 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	**ft_scan_map(t_solong *game, char *map_path);
 char	**ft_alloc_map_memory(t_solong *game, char *path);
 void	ft_count_map_size(t_solong *game, char *path);
 
-/*         ft_map_init.c          */
+/*         ft_map_validation.c          */
 void	ft_map_validation(t_solong *game);
 void	ft_check_map_elements(t_solong *game);
 void	ft_char_validation(t_solong *game);
@@ -101,6 +101,7 @@ void	ft_char_validation(t_solong *game);
 /*         ft_hook_utils.c        */
 void	ft_define_hooks(t_solong *game);
 int		ft_handle_key(int key, t_solong *game);
+int		ft_update_game(t_solong *game);
 
 /*         ft_close_game.c*/
 int		ft_close(t_solong *game, char *message);

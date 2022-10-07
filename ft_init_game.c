@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 06:47:11 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 05:15:43 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/07 05:48:23 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_init_game(t_solong *game, int argc, char **argv)
 	if (ft_mlx_and_window_init(game) != 0)
 		return (-1);
 	ft_get_images(game);
-	ft_print_map(game);
+	//ft_print_map(game);
 	return (0);
 }
 
