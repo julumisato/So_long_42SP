@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:46:16 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 02:59:00 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 22:33:51 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_init_variables(t_solong *game)
 	game->map.c_n = 0;
 	game->map.e_n = 0;
 	game->map.p_n = 0;
+	game->moves = 0;
 }
 
 int	main(int argc, char **argv)

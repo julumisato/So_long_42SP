@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 19:48:09 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 22:33:38 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include <mlx.h>
-# include <stdlib.h> // for exit() function
 //# include "../minilibx/mlx.h"
+# include <stdlib.h> // for exit() function
 # include "../libft/libft.h"
 
 // Xlib key symbols
@@ -78,6 +78,7 @@ typedef struct s_solong
 	int		win_y;
 	t_map	map;
 	t_imgs	imgs;
+	int		moves;
 }				t_solong;
 
 /*         so_long.c              */
