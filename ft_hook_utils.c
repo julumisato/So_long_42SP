@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 22:54:20 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 23:01:19 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	ft_print_move_count(t_solong *game)
 	char	*count;
 
 	count = ft_itoa(game->moves);
-	mlx_string_put(game->mlx, game->win, 25, 25, 0xFFFF00, "Move count:");
-	mlx_string_put(game->mlx, game->win, 120, 25, 0xFFFF00, count);
+	mlx_string_put(game->mlx, game->win, 25, 25, 0xFFFFFF, "Move count:");
+	mlx_string_put(game->mlx, game->win, 120, 25, 0xFFFFFF, count);
 	free(count);
 	return ;
 }
@@ -88,6 +88,6 @@ int	ft_update_loop(t_solong *game)
 		i ++;
 	}
 	ft_print_player(game);
-	// ft_print_move_count(game);
+	ft_print_move_count(game);
 	return (0);
 }

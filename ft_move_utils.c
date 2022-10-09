@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:07:16 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 22:56:40 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 23:33:44 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	ft_move_player(t_solong *game, int next_x, int next_y)
 		game->imgs.player_x = next_x;
 		game->imgs.player_y = next_y;
 		game->moves ++;
-		ft_printf("Move count: %d\n", game->moves);
+		//ft_printf("Move count: %d\n", game->moves);
 	}
 }
