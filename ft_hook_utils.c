@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 23:01:19 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/10 00:43:55 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_define_hooks(t_solong *game)
 {
-	mlx_hook(game->win, DestroyNotify, NoEventMask, &ft_close, game);
+	mlx_hook(game->win, DestroyNotify, NoEventMask, &ft_end_when_pressing_x, game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, &ft_handle_key, game);
 	mlx_loop_hook(game->mlx, &ft_update_loop, game);
 	return ;
@@ -40,29 +40,6 @@ int	ft_handle_key(int key, t_solong *game)
 	ft_move_player(game, row, col);
 
 	return (1);
-}
-
-void	ft_print_player(t_solong *game)
-{
-	int	x;
-	int	y;
-
-	x = game->imgs.player_x;
-	y = game->imgs.player_y;
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->imgs.player.ptr, y * TILESIZE, x * TILESIZE);
-	return ;
-}
-
-void	ft_print_move_count(t_solong *game)
-{
-	char	*count;
-
-	count = ft_itoa(game->moves);
-	mlx_string_put(game->mlx, game->win, 25, 25, 0xFFFFFF, "Move count:");
-	mlx_string_put(game->mlx, game->win, 120, 25, 0xFFFFFF, count);
-	free(count);
-	return ;
 }
 
 int	ft_update_loop(t_solong *game)

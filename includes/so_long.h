@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 22:33:38 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/10 00:45:22 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,13 @@ void	ft_print_player(t_solong *game);
 
 /*         ft_move_game.c        */
 void	ft_move_player(t_solong *game, int next_x, int next_y);
+int		ft_check_movement(t_solong *game, int next_x, int next_y);
+void	ft_print_player(t_solong *game);
+void	ft_print_move_count(t_solong *game);
 
 /*         ft_close_game.c        */
 int		ft_close(t_solong *game, char *message);
+int		ft_end_when_pressing_x(t_solong *game);
 void	ft_free_map(t_map *map, char **map_mat);
 
 #endif
