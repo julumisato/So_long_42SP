@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 05:50:40 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 19:37:47 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define COLLECT_PATH "assets/collect.xpm"
 # define GOAL_PATH "assets/goal.xpm"
 # define VALID_CHAR "10CEP"
+# define QUIT XK_q
+# define ESC XK_Escape
 
 typedef struct s_util
 {
@@ -101,9 +103,12 @@ void	ft_char_validation(t_solong *game);
 /*         ft_hook_utils.c        */
 void	ft_define_hooks(t_solong *game);
 int		ft_handle_key(int key, t_solong *game);
-int		ft_update_game(t_solong *game);
+int		ft_update_loop(t_solong *game);
 
-/*         ft_close_game.c*/
+/*         ft_move_game.c        */
+void	ft_move_player(t_solong *game, int next_x, int next_y);
+
+/*         ft_close_game.c        */
 int		ft_close(t_solong *game, char *message);
 void	ft_free_map(t_map *map, char **map_mat);
 

@@ -7,7 +7,7 @@ MLXFLAGS =	-lmlx -Ilmlx -lX11 -lXext
 NAME	=	so_long
 
 SRCS	=	so_long.c ft_init_game.c ft_map_init.c ft_hook_utils.c ft_close_game.c\
-			ft_map_validation.c
+			ft_map_validation.c ft_move_utils.c
 OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 OBJ_DIR =	objs/
 INCL_DIR =	includes/
