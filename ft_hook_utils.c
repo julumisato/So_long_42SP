@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 05:58:49 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/08 03:09:06 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_handle_key(int key, t_solong *game)
 {
 	if (key == XK_Escape || key == XK_q)
 		return (ft_close(game, "exit game"));
-/*	
+/*
 	if (key == XK_a || key == XK_Left)
 		ft_moveleft(game);
 	if (key == XK_s || key == XK_Down)
