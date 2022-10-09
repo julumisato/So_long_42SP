@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 19:30:07 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 19:48:18 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ int	ft_handle_key(int key, t_solong *game)
 	return (1);
 }
 
+void	ft_print_player(t_solong *game)
+{
+	int	x;
+	int	y;
+
+	x = game->imgs.player_x;
+	y = game->imgs.player_y;
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->imgs.player.ptr, y * TILESIZE, x * TILESIZE);
+	return ;
+}
+
 int	ft_update_loop(t_solong *game)
 {
 	int	i;
@@ -54,9 +66,6 @@ int	ft_update_loop(t_solong *game)
 		j = 0;
 		while (game->map.mapp[i][j])
 		{
-			if (game->map.mapp[i][j] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->imgs.player.ptr, j * TILESIZE, i * TILESIZE);
 			if (game->map.mapp[i][j] == 'C')
 				mlx_put_image_to_window(game->mlx, game->win,
 					game->imgs.collect.ptr, j * TILESIZE, i * TILESIZE);
@@ -67,6 +76,7 @@ int	ft_update_loop(t_solong *game)
 		}
 		i ++;
 	}
+	ft_print_player(game);
 	// ft_print_move_count(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 19:37:47 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 19:48:09 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_char_validation(t_solong *game);
 void	ft_define_hooks(t_solong *game);
 int		ft_handle_key(int key, t_solong *game);
 int		ft_update_loop(t_solong *game);
+void	ft_print_player(t_solong *game);
 
 /*         ft_move_game.c        */
 void	ft_move_player(t_solong *game, int next_x, int next_y);

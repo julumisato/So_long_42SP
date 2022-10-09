@@ -6,11 +6,18 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:07:16 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 19:37:41 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/09 19:56:35 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_check_movement(t_solong *game, int next_x, int next_y)
+{
+	if (game->map.mapp[next_x][next_y] == '1')
+		return (0);
+	return (1);
+}
 
 void	ft_move_player(t_solong *game, int next_x, int next_y)
 {
@@ -20,7 +27,7 @@ void	ft_move_player(t_solong *game, int next_x, int next_y)
 
 	last_x = game->imgs.player_x;
 	last_y = game->imgs.player_y;
-	possible = 1; //make a function to verify if move is possible
+	possible = ft_check_movement(game, next_x, next_y);
 	if (possible)
 	{
 		if (game->map.mapp[next_x][next_y] == 'C')
