@@ -6,55 +6,55 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:07:16 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/10 00:44:31 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/14 06:14:08 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_move_player(t_solong *game, int next_x, int next_y)
+void	ft_move_player(t_solong *game, int next_row, int next_col)
 {
-	int	last_x;
-	int	last_y;
+	int	last_row;
+	int	last_col;
 	int	possible;
 
-	last_x = game->imgs.player_x;
-	last_y = game->imgs.player_y;
-	possible = ft_check_movement(game, next_x, next_y);
+	last_row = game->imgs.player_y;
+	last_col = game->imgs.player_x;
+	possible = ft_check_movement(game, next_row, next_col);
 	if (possible)
 	{
-		if (game->map.mapp[next_x][next_y] == 'C')
+		if (game->map.mapp[next_row][next_col] == 'C')
 			game->map.c_n --;
-		game->map.mapp[last_x][last_y] = '0';
-		game->map.mapp[next_x][next_y] = 'p';
-		game->imgs.player_x = next_x;
-		game->imgs.player_y = next_y;
+		game->map.mapp[last_row][last_col] = '0';
+		game->map.mapp[next_row][next_col] = 'p';
+		game->imgs.player_y = next_row;
+		game->imgs.player_x = next_col;
 		game->moves ++;
 		ft_printf("Move count: %d\n", game->moves);
 	}
 }
 
-int	ft_check_movement(t_solong *game, int next_x, int next_y)
+int	ft_check_movement(t_solong *game, int next_row, int next_col)
 {
-	if (game->map.mapp[next_x][next_y] == '1')
+	if (game->map.mapp[next_row][next_col] == '1')
 		return (0);
-	if (game->map.mapp[next_x][next_y] == 'E'
+	if (game->map.mapp[next_row][next_col] == 'E'
 		&& game->map.c_n == 0)
 		ft_close(game, "Game clear!");
-	if (game->map.mapp[next_x][next_y] == 'E')
+	if (game->map.mapp[next_row][next_col] == 'E')
 		return (0);
 	return (1);
 }
 
 void	ft_print_player(t_solong *game)
 {
-	int	x;
-	int	y;
+	int	row;
+	int	col;
 
-	x = game->imgs.player_x;
-	y = game->imgs.player_y;
+	row = game->imgs.player_y;
+	col = game->imgs.player_x;
 	mlx_put_image_to_window(game->mlx, game->win,
-		game->imgs.player.ptr, y * TILESIZE, x * TILESIZE);
+		game->imgs.player.ptr, col * TILESIZE, row * TILESIZE);
 	return ;
 }
 

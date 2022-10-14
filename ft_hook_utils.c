@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/10 00:43:55 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/14 06:15:18 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_handle_key(int key, t_solong *game)
 	int	row;
 	int	col;
 
-	row = game->imgs.player_x;
-	col = game->imgs.player_y;
+	col = game->imgs.player_x;
+	row = game->imgs.player_y;
 	if (key == ESC || key == QUIT)
 		ft_close(game, "exit game");
 	if (key == XK_w || key == XK_Up)
@@ -37,32 +37,32 @@ int	ft_handle_key(int key, t_solong *game)
 		col ++;
 	if (key == XK_a || key == XK_Left)
 		col --;
-	ft_move_player(game, row, col);
-
+	if (row != game->imgs.player_y || col != game->imgs.player_x)
+		ft_move_player(game, row, col);
 	return (1);
 }
 
 int	ft_update_loop(t_solong *game)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
 	ft_print_map(game);
-	i = 0;
-	while (game->map.mapp[i])
+	row = 0;
+	while (game->map.mapp[row])
 	{
-		j = 0;
-		while (game->map.mapp[i][j])
+		col = 0;
+		while (game->map.mapp[row][col])
 		{
-			if (game->map.mapp[i][j] == 'C')
+			if (game->map.mapp[row][col] == 'C')
 				mlx_put_image_to_window(game->mlx, game->win,
-					game->imgs.collect.ptr, j * TILESIZE, i * TILESIZE);
-			if (game->map.mapp[i][j] == 'E')
+					game->imgs.collect.ptr, col * TILESIZE, row * TILESIZE);
+			if (game->map.mapp[row][col] == 'E')
 				mlx_put_image_to_window(game->mlx, game->win,
-					game->imgs.goal.ptr, j * TILESIZE, i * TILESIZE);
-			j ++;
+					game->imgs.goal.ptr, col * TILESIZE, row * TILESIZE);
+			col ++;
 		}
-		i ++;
+		row ++;
 	}
 	ft_print_player(game);
 	ft_print_move_count(game);

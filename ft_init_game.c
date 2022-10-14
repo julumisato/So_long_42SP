@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 06:47:11 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/09 19:29:46 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/14 06:14:41 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_init_game(t_solong *game, int argc, char **argv)
 	if (ft_mlx_and_window_init(game) != 0)
 		return (-1);
 	ft_get_images(game);
-	//ft_print_map(game);
 	return (0);
 }
 
@@ -38,26 +37,25 @@ int	ft_mlx_and_window_init(t_solong *game)
 
 void	ft_print_map(t_solong *game)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (game->map.mapp[i])
+	row = 0;
+	while (game->map.mapp[row])
 	{
-		j = 0;
-		while (game->map.mapp[i][j])
+		col = 0;
+		while (game->map.mapp[row][col])
 		{
-			if (game->map.mapp[i][j] == '1')
+			if (game->map.mapp[row][col] == '1')
 				mlx_put_image_to_window(game->mlx, game->win,
-					game->imgs.wall.ptr, j * TILESIZE, i * TILESIZE);
+					game->imgs.wall.ptr, col * TILESIZE, row * TILESIZE);
 			else
 				mlx_put_image_to_window(game->mlx, game->win,
-					game->imgs.grass.ptr, j * TILESIZE, i * TILESIZE);
-			j ++;
+					game->imgs.grass.ptr, col * TILESIZE, row * TILESIZE);
+			col ++;
 		}
-		i ++;
+		row ++;
 	}
-	return ;
 }
 
 int	ft_get_images(t_solong *game)

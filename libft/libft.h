@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 22:06:05 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/07 05:08:22 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/10 04:26:06 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,16 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
-/*.............Bonus functions........................*/
+/*.............Linked list functions........................*/
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 int			ft_lstsize(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
+void		ft_lstiter(t_list *lst, void (*f)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void		ft_lstclear(t_list **lst, void (*del)(void *));
+void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstadd_back(t_list **lst, t_list *new);
 
 /*_________________________________ GNL _________________________________*/
 
