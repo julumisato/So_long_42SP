@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 03:09:40 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/18 06:00:50 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/18 06:28:45 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_check_path(char **check, t_check *pathcheck, int row, int col)
 		ft_check_path(check, pathcheck, row - 1, col);
 		ft_check_path(check, pathcheck, row, col - 1);
 	}
+	return ;
 }
 
 int	ft_check_reach(t_map *map, t_check *pathcheck)
