@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:14:32 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/14 06:15:18 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/18 05:50:14 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_define_hooks(t_solong *game)
 {
-	mlx_hook(game->win, DestroyNotify, NoEventMask, &ft_end_when_pressing_x, game);
+	mlx_hook(game->win, DestroyNotify, NoEventMask, &ft_end_when_press_x, game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, &ft_handle_key, game);
 	mlx_loop_hook(game->mlx, &ft_update_loop, game);
 	return ;
@@ -27,7 +27,7 @@ int	ft_handle_key(int key, t_solong *game)
 
 	col = game->imgs.player_x;
 	row = game->imgs.player_y;
-	if (key == ESC || key == QUIT)
+	if (key == XK_Escape || key == XK_q)
 		ft_close(game, "exit game");
 	if (key == XK_w || key == XK_Up)
 		row --;

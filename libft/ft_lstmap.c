@@ -6,11 +6,11 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 04:00:19 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/10 04:28:15 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/18 05:45:43 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

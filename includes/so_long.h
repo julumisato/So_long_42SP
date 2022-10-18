@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/10 00:45:22 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/18 05:50:02 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@
 # define COLLECT_PATH "assets/collect.xpm"
 # define GOAL_PATH "assets/goal.xpm"
 # define VALID_CHAR "10CEP"
-# define QUIT XK_q
-# define ESC XK_Escape
+
+typedef struct s_check
+{
+	int	c_n;
+	int	e_n;
+}	t_check;
 
 typedef struct s_util
 {
@@ -101,7 +105,13 @@ void	ft_map_validation(t_solong *game);
 void	ft_check_map_elements(t_solong *game);
 void	ft_char_validation(t_solong *game);
 
-/*         ft_hook_utils.c        */
+/*         ft_path_check.c             */
+void	ft_check_valid_path(t_solong *game);
+int		ft_check_reach(t_map *map, t_check *pathcheck);
+void	ft_check_path(char **check, t_check *pathcheck, int row, int col);
+char	**ft_init_check_matrix(t_solong *game);
+
+/*         ft_hook_utils.c             */
 void	ft_define_hooks(t_solong *game);
 int		ft_handle_key(int key, t_solong *game);
 int		ft_update_loop(t_solong *game);
@@ -115,7 +125,7 @@ void	ft_print_move_count(t_solong *game);
 
 /*         ft_close_game.c        */
 int		ft_close(t_solong *game, char *message);
-int		ft_end_when_pressing_x(t_solong *game);
+int		ft_end_when_press_x(t_solong *game);
 void	ft_free_map(t_map *map, char **map_mat);
 
 #endif

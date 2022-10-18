@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 07:01:43 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/14 06:16:50 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/18 05:24:28 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_map_validation(t_solong *game)
 			ft_close(game, "Map has to be surrounded by walls!");
 		i ++;
 	}
-	//ft_check_valid_path(game);
+	ft_check_valid_path(game);
 	return ;
 }
 

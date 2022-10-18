@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 06:48:53 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/14 06:15:34 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/18 05:50:07 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_close(t_solong *game, char *message)
 	exit (0);
 }
 
-int	ft_end_when_pressing_x(t_solong *game)
+int	ft_end_when_press_x(t_solong *game)
 {
 	ft_close(game, "Close game");
 	return (0);
