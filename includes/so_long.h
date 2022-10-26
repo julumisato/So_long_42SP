@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/26 18:28:38 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/26 18:53:50 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include <mlx.h>
-# include <stdlib.h> 
+# include <stdlib.h>
 # include "../libft/libft.h"
 
 /* Xlib key symbols */

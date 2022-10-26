@@ -33,6 +33,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@rmdir $(OBJ_DIR)
 	@make fclean -C $(LIB_DIR)
 
 re: fclean all
