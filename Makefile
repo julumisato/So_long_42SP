@@ -3,7 +3,6 @@ CFLAGS	=	-Wall -Wextra -Werror -I$(INCL_DIR)
 MKDIR	=	mkdir -p
 RM		=	rm -f
 MLXFLAGS =	-lmlx -Ilmlx -lX11 -lXext
-##-I$(MLX_DIR) -L $(MLX_DIR) 
 NAME	=	so_long
 
 SRCS	=	so_long.c ft_init_game.c ft_map_init.c ft_hook_utils.c ft_close_game.c\
@@ -13,15 +12,13 @@ OBJ_DIR =	objs/
 INCL_DIR =	includes/
 LIB		=	libft/libft.a
 LIB_DIR	=	libft/
-# MLX		=	$(MLX_DIR)libmlx.a
-# MLX_DIR	=	minilibx/
 MAP		=	maps/map2.ber
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(MLXFLAGS) -o $(NAME)
-	@echo "\n\n     **** So_long compiling done ****\n\n"
+	@echo "\n\n    **** So_long compiling done ****\n\n"
 
 $(OBJ_DIR)%.o: %.c $(LIB)
 	@$(MKDIR) $(OBJ_DIR)
