@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:55:07 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/26 04:50:28 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/26 18:28:38 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdlib.h> 
 # include "../libft/libft.h"
 
-// Xlib key symbols
+/* Xlib key symbols */
 # include <X11/keysym.h>
-// event names & masks macros
+/* event names & masks macros */
 # include <X11/X.h>
-// open function includes
+/* 'open' includes */
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -114,7 +114,7 @@ int		ft_handle_key(int key, t_solong *game);
 int		ft_update_loop(t_solong *game);
 void	ft_print_player(t_solong *game);
 
-/*         ft_move_game.c            */
+/*         ft_move_utils.c            */
 void	ft_move_player(t_solong *game, int next_x, int next_y);
 int		ft_check_movement(t_solong *game, int next_x, int next_y);
 void	ft_print_player(t_solong *game);

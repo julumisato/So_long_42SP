@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 07:01:43 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/18 05:24:28 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/26 18:02:29 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	ft_map_validation(t_solong *game)
 void	ft_check_map_elements(t_solong *game)
 {
 	if (game->map.c_n < 1)
-		ft_close(game, "The map has contain at least one collectible element!");
+		ft_close(game, "The map has to contain at least one collectible!");
 	if (game->map.e_n != 1)
-		ft_close(game, "Only one exit element is allowed!");
+		ft_close(game, "Invalid map: at least/only one exit element allowed!");
 	if (game->map.p_n != 1)
-		ft_close(game, "Only one Player initial position is allowed!");
+		ft_close(game, "Invalid map: at least/only one player allowed!");
 	return ;
 }
 

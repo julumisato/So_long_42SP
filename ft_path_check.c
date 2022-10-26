@@ -6,7 +6,7 @@
 /*   By: jusato <jusato@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 03:09:40 by jusato            #+#    #+#             */
-/*   Updated: 2022/10/26 04:27:53 by jusato           ###   ########.fr       */
+/*   Updated: 2022/10/26 18:13:57 by jusato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,14 @@ void	ft_check_path(char **check, t_check *pathcheck, int row, int col)
 {
 	if (!check[row][col] || check[row][col] == 'X')
 		return ;
-	if (check[row][col] == 'E')
-		pathcheck->e_n ++;
 	if (check[row][col] == 'C')
 		pathcheck->c_n ++;
+	if (check[row][col] == 'E')
+	{
+		check[row][col] = 'X';
+		pathcheck->e_n ++;
+		return ;
+	}
 	if (check[row][col] != '1')
 	{
 		check[row][col] = 'X';
