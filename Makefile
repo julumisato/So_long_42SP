@@ -40,7 +40,7 @@ re: fclean all
 run: $(NAME)
 	@./$(NAME) $(MAP)
 
-valgrind:
+valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) $(MAP)
 
 .PHONY: all clean fclean re run valgrind
